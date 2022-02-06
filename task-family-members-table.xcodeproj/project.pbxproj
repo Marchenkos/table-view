@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6EDDFF4F27B032CD0074C350 /* AddNewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDDFF4E27B032CD0074C350 /* AddNewItemController.swift */; };
 		6EDF5AF127A9907D00EDC067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDF5AF027A9907D00EDC067 /* AppDelegate.swift */; };
 		6EDF5AF327A9907D00EDC067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDF5AF227A9907D00EDC067 /* SceneDelegate.swift */; };
 		6EDF5AF527A9907D00EDC067 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDF5AF427A9907D00EDC067 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6EDDFF4E27B032CD0074C350 /* AddNewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemController.swift; sourceTree = "<group>"; };
 		6EDF5AED27A9907D00EDC067 /* task-family-members-table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "task-family-members-table.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDF5AF027A9907D00EDC067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EDF5AF227A9907D00EDC067 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				6EDF5AF027A9907D00EDC067 /* AppDelegate.swift */,
 				6EDF5AF227A9907D00EDC067 /* SceneDelegate.swift */,
 				6EDF5AF427A9907D00EDC067 /* ViewController.swift */,
+				6EDDFF4E27B032CD0074C350 /* AddNewItemController.swift */,
 				6EDF5B0927A9982500EDC067 /* FamilyMembers.swift */,
 				6EDF5AF627A9907D00EDC067 /* Main.storyboard */,
 				6EDF5AF927A9907E00EDC067 /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				6EDF5B0727A9942800EDC067 /* FMTableViewCell.swift in Sources */,
 				6EDF5AF327A9907D00EDC067 /* SceneDelegate.swift in Sources */,
 				6EDF5B0A27A9982500EDC067 /* FamilyMembers.swift in Sources */,
+				6EDDFF4F27B032CD0074C350 /* AddNewItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

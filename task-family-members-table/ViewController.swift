@@ -5,6 +5,18 @@ class ViewController: UIViewController, UITableViewDragDelegate, UITableViewDrop
     let cellIdentifier = "FMTableViewCell"
     @IBOutlet weak var tableView: UITableView!
 
+    @IBAction func addNew(_ sender: Any) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddNewItemController") as! AddNewItemController
+        secondViewController.addMember = self.addNewMember
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
+    func addNewMember(_ member: FamilyMembers) {
+        FamilyMembers.data.append(member)
+        
+        tableView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,6 +29,13 @@ class ViewController: UIViewController, UITableViewDragDelegate, UITableViewDrop
         tableView.dropDelegate = self
 
         tableView.dragInteractionEnabled = true
+
+        title = "Family members"
+    }
+    
+    @objc func addItem() {
+        let addItemViewController:AddNewItemController = AddNewItemController()
+        self.present(addItemViewController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
