@@ -32,6 +32,8 @@
 		6EDF5B0527A9942800EDC067 /* FMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMTableViewCell.swift; sourceTree = "<group>"; };
 		6EDF5B0627A9942800EDC067 /* FMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FMTableViewCell.xib; sourceTree = "<group>"; };
 		6EDF5B0927A9982500EDC067 /* FamilyMembers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyMembers.swift; sourceTree = "<group>"; };
+		A2B359AC9C72A987C3E21BEC /* Pods-task-family-members-table.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task-family-members-table.debug.xcconfig"; path = "Target Support Files/Pods-task-family-members-table/Pods-task-family-members-table.debug.xcconfig"; sourceTree = "<group>"; };
+		E3B83F05776C60B6322ED8DC /* Pods-task-family-members-table.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-task-family-members-table.release.xcconfig"; path = "Target Support Files/Pods-task-family-members-table/Pods-task-family-members-table.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,11 +47,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58187FEF651A0372E146A0DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2B359AC9C72A987C3E21BEC /* Pods-task-family-members-table.debug.xcconfig */,
+				E3B83F05776C60B6322ED8DC /* Pods-task-family-members-table.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6EDF5AE427A9907D00EDC067 = {
 			isa = PBXGroup;
 			children = (
 				6EDF5AEF27A9907D00EDC067 /* task-family-members-table */,
 				6EDF5AEE27A9907D00EDC067 /* Products */,
+				58187FEF651A0372E146A0DA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +106,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6EDF5B0127A9907E00EDC067 /* Build configuration list for PBXNativeTarget "task-family-members-table" */;
 			buildPhases = (
+				6ED64D6727B16540001FB53E /* ShellScript */,
+				8744DB7F0F30C67051D59E3C /* [CP] Check Pods Manifest.lock */,
 				6EDF5AE927A9907D00EDC067 /* Sources */,
 				6EDF5AEA27A9907D00EDC067 /* Frameworks */,
 				6EDF5AEB27A9907D00EDC067 /* Resources */,
@@ -153,6 +167,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6ED64D6727B16540001FB53E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		8744DB7F0F30C67051D59E3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-task-family-members-table-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6EDF5AE927A9907D00EDC067 /* Sources */ = {
@@ -308,6 +364,7 @@
 		};
 		6EDF5B0227A9907E00EDC067 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2B359AC9C72A987C3E21BEC /* Pods-task-family-members-table.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -337,6 +394,7 @@
 		};
 		6EDF5B0327A9907E00EDC067 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3B83F05776C60B6322ED8DC /* Pods-task-family-members-table.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

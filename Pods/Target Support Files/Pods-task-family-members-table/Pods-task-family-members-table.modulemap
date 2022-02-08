@@ -1,0 +1,6 @@
+framework module Pods_task_family_members_table {
+  umbrella header "Pods-task-family-members-table-umbrella.h"
+
+  export *
+  module * { export * }
+}

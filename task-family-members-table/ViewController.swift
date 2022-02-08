@@ -1,18 +1,22 @@
 import UIKit
 import MobileCoreServices
 
-class ViewController: UIViewController, UITableViewDragDelegate, UITableViewDropDelegate {
-    let cellIdentifier = "FMTableViewCell"
-    @IBOutlet weak var tableView: UITableView!
+class ViewController: UIViewController {
+    @IBOutlet private var tableView: UITableView!
+    
+    private enum Constants {
+        static let cellIdentifier = "FMTableViewCell"
+        static let addNewItemControllerIdentifier = "AddNewItemController"
+        static let title = "Family members"
+    }
 
     @IBAction func addNew(_ sender: Any) {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddNewItemController") as! AddNewItemController
-        secondViewController.addMember = self.addNewMember
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.addNewItemControllerIdentifier) as! AddNewItemController
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
-    func addNewMember(_ member: FamilyMembers) {
-        FamilyMembers.data.append(member)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         tableView.reloadData()
     }
@@ -20,7 +24,7 @@ class ViewController: UIViewController, UITableViewDragDelegate, UITableViewDrop
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib.init(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib.init(nibName: Constants.cellIdentifier, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,14 +34,11 @@ class ViewController: UIViewController, UITableViewDragDelegate, UITableViewDrop
 
         tableView.dragInteractionEnabled = true
 
-        title = "Family members"
+        title = Constants.title
     }
-    
-    @objc func addItem() {
-        let addItemViewController:AddNewItemController = AddNewItemController()
-        self.present(addItemViewController, animated: true, completion: nil)
-    }
-    
+}
+
+extension ViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let item = FamilyMembers.data[indexPath.row]
         
@@ -52,7 +53,9 @@ class ViewController: UIViewController, UITableViewDragDelegate, UITableViewDrop
             return []
         }
     }
-    
+}
+
+extension ViewController: UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
         let destinationIndexPath: IndexPath
 
@@ -95,11 +98,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return true
     }
     
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = FamilyMembers.data[sourceIndexPath.row]
-        
-        FamilyMembers.data.insert(item, at: destinationIndexPath.row)
-        FamilyMembers.data.remove(at: sourceIndexPath.row)
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {        
+        FamilyMembers.data.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,25 +108,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-                     withIdentifier: cellIdentifier, for: indexPath) as! FMTableViewCell
+            withIdentifier: Constants.cellIdentifier, for: indexPath) as! FMTableViewCell
 
         let familyMember = FamilyMembers.data[indexPath.row]
 
-        cell.labelMember.text = familyMember.member
-        cell.labelName.text = familyMember.name
-        cell.img.image = UIImage(systemName: "person.circle")
+        cell.memberText = familyMember.member
+        cell.nameText = familyMember.name
+        cell.imageValue = UIImage(systemName: "person.circle")
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.beginUpdates()
-            
             FamilyMembers.data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            tableView.endUpdates()
         }
     }
 }

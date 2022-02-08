@@ -59,7 +59,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="img" destination="jpS-yW-pgY" id="xhM-a7-5c0"/>
+                <outlet property="cellImage" destination="jpS-yW-pgY" id="s0e-v6-hNA"/>
                 <outlet property="labelMember" destination="12M-ev-gmL" id="MKO-zg-Uoc"/>
                 <outlet property="labelName" destination="5IT-ZO-HZX" id="Kc6-0U-WgE"/>
             </connections>
