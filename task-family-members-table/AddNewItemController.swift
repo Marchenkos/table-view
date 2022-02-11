@@ -1,5 +1,4 @@
 import UIKit
-import MobileCoreServices
 
 class AddNewItemController: UITableViewController {
     @IBOutlet private var nameField: UITextField!
